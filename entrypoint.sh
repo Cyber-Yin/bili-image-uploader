@@ -1,3 +1,5 @@
+#!/bin/sh
+
 yarn prisma generate
 
 DB_PATH="/app/prisma/data.db"
