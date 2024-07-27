@@ -36,7 +36,7 @@ const StreamPage: React.FC = async () => {
       id: true,
       file_name: true,
     },
-    where: { deleted: false },
+    where: { deleted: 0 },
     orderBy: [
       {
         id: "desc",
