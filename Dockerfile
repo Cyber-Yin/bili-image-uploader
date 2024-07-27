@@ -12,7 +12,6 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN yarn prisma db push
 RUN yarn run build
-COPY --from=deps /app/node_modules/prisma ./.next/standalone/node_modules/prisma
 
 FROM base AS runner
 WORKDIR /app
@@ -21,6 +20,8 @@ COPY --from=builder /app/public ./public
 RUN mkdir .next
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+COPY --from=deps /app/node_modules/prisma ./node_modules/prisma
+RUN ls ./node_modules
 COPY entrypoint.sh ./
 COPY prisma/schema.prisma ./prisma/schema.prisma
 
@@ -32,4 +33,4 @@ EXPOSE 10003
 ENV HOSTNAME "0.0.0.0"
 
 ENTRYPOINT ["./entrypoint.sh"]
-CMD ["yarn", "start"]
+CMD ["node", "server.js"]
