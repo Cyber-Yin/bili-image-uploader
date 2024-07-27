@@ -7,7 +7,7 @@ COPY package.json yarn.lock ./
 RUN yarn --frozen-lockfile
 
 FROM base AS prod
-WORKDIR /add
+WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn --frozen-lockfile --production
 
