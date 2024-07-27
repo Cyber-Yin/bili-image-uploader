@@ -1,7 +1,6 @@
 FROM node:18-alpine AS base
 
 FROM base AS deps
-RUN apt-get update && apt-get install -y openssl
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json yarn.lock ./
