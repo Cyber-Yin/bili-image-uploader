@@ -16,6 +16,7 @@ RUN yarn run build
 FROM base AS runner
 WORKDIR /app
 RUN yarn global add prisma
+ENV PATH="${PATH}:/usr/local/share/.config/yarn/global/node_modules/.bin"
 ENV NODE_ENV production
 COPY --from=builder /app/public ./public
 RUN mkdir .next
