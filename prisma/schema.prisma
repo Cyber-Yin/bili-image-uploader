@@ -7,15 +7,8 @@ datasource db {
     url      = "file:./data.db"
 }
 
-model user {
-    id   Int    @id @default(autoincrement())
-    name String
-    mid  Int    @unique
-}
-
 model image {
     id        Int     @id @default(autoincrement())
     file_name String
     deleted   Boolean @default(false)
-    user_id   Int
 }
