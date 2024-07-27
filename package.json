@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "prod": "yarn prisma migrate deploy && next start"
+    "lint": "next lint"
   },
   "dependencies": {
     "prisma": "^5.17.0",

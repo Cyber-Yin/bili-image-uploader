@@ -10,7 +10,6 @@ FROM base AS prod
 WORKDIR /add
 COPY package.json yarn.lock ./
 RUN yarn --frozen-lockfile --production
-RUN yarn prisma generate
 
 FROM base AS builder
 WORKDIR /app
@@ -25,12 +24,15 @@ ENV NODE_ENV production
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=prod /app/node_modules ./node_modules
-COPY package.json ./package.json
+COPY package.json entrypoint.sh ./
 COPY prisma/schema.prisma ./prisma
+
+RUN chmod +x ./entrypoint.sh
 
 ENV PORT 10003
 EXPOSE 10003
 
 ENV HOSTNAME "0.0.0.0"
 
-CMD ["yarn", "run", "prod"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["yarn", "start"]
