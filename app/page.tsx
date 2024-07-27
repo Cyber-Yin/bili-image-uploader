@@ -1,5 +1,3 @@
-"use server";
-
 import ImagePreview from "@/components/ImagePreview";
 import Loading from "@/components/Loading";
 import QRcode from "@/components/QRcode";
@@ -8,6 +6,8 @@ import { getUserInfo } from "@/lib/bilibili-api";
 import DatabaseInstance from "@/lib/server/prisma";
 import { sleep } from "@/lib/utils";
 import { Suspense } from "react";
+
+export const revalidate = 0;
 
 export default async function Home() {
   return (
@@ -36,7 +36,7 @@ const StreamPage: React.FC = async () => {
       id: true,
       file_name: true,
     },
-    where: { deleted: false },
+    where: { deleted: 0 },
     orderBy: [
       {
         id: "desc",

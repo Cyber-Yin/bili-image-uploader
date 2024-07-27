@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = "file:./data.db"
+    provider = "mysql"
+    url      = env("DATABASE_URL")
 }
 
 model image {
-    id        Int     @id @default(autoincrement())
-    file_name String
-    deleted   Boolean @default(false)
+    id        Int    @id @default(autoincrement())
+    file_name String @db.VarChar(255)
+    deleted   Int    @default(0) @db.UnsignedTinyInt
 }

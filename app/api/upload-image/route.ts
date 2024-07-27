@@ -2,6 +2,8 @@ import { NextRequest } from "next/server";
 import { uploadImage } from "@/lib/bilibili-api";
 import DatabaseInstance from "@/lib/server/prisma";
 
+export const revalidate = 0;
+
 export async function POST(req: NextRequest) {
   const formData = await req.formData();
   const image = formData.get("image") as File;
@@ -21,15 +23,13 @@ export async function POST(req: NextRequest) {
   try {
     const imageUrl = await uploadImage(image);
 
-    console.log(imageUrl);
-
     const pathname = new URL(imageUrl).pathname;
     const filename = pathname.substring(pathname.lastIndexOf("/") + 1);
 
     await DatabaseInstance.image.create({
       data: {
         file_name: filename,
-        deleted: false,
+        deleted: 0,
       },
     });
 

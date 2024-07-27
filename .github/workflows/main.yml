@@ -38,3 +38,5 @@ jobs:
           tags: |
             cyberyin/bili-image-uploader:${{ steps.release_version.outputs.result }}
             cyberyin/bili-image-uploader:latest
+          build-args: |
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
