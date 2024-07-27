@@ -9,6 +9,8 @@ import DatabaseInstance from "@/lib/server/prisma";
 import { sleep } from "@/lib/utils";
 import { Suspense } from "react";
 
+export const revalidate = 0;
+
 export default async function Home() {
   return (
     <Suspense fallback={<Loading />}>

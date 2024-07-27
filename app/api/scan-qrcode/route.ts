@@ -1,6 +1,8 @@
 import { scanQRcode } from "@/lib/bilibili-api";
 import { NextRequest } from "next/server";
 
+export const revalidate = 0;
+
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const qrcodeKey = searchParams.get("qrcode");

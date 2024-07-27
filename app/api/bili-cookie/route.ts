@@ -2,6 +2,8 @@ import { NextRequest } from "next/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
+export const revalidate = 0;
+
 export async function POST(req: NextRequest) {
   const data: {
     sessdata: string;
