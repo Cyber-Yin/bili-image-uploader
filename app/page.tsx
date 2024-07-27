@@ -1,5 +1,3 @@
-"use server";
-
 import ImagePreview from "@/components/ImagePreview";
 import Loading from "@/components/Loading";
 import QRcode from "@/components/QRcode";
