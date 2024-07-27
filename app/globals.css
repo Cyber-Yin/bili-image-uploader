@@ -3,4 +3,7 @@
 @tailwind utilities;
 
 @layer {
+  html {
+    @apply scroll-smooth;
+  }
 }
