@@ -1,0 +1,11 @@
+/node_modules
+/.next
+
+.env
+next-env.d.ts
+
+prisma/data.db
+
+README.md
+
+.gitignore
