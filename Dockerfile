@@ -11,6 +11,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN yarn prisma generate
+RUN yarn prisma db push
 RUN yarn run build
 
 FROM base AS runner
@@ -20,7 +21,7 @@ COPY --from=builder /app/public ./public
 RUN mkdir .next
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-COPY prisma ./prisma
+COPY prisma/schema.prisma ./prisma
 
 ENV PORT 10003
 EXPOSE 10003
