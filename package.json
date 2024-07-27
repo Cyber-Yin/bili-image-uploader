@@ -10,12 +10,20 @@
   },
   "dependencies": {
     "@prisma/client": "^5.17.0",
+    "@uidotdev/usehooks": "^2.4.1",
+    "axios": "^1.7.2",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.416.0",
     "next": "14.2.5",
+    "qrcode": "^1.5.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "swr": "^2.2.5",
+    "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/qrcode": "^1.5.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
