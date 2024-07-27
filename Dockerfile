@@ -34,5 +34,5 @@ EXPOSE 10003
 
 ENV HOSTNAME "0.0.0.0"
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
 CMD ["yarn", "start"]
