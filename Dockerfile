@@ -15,13 +15,12 @@ RUN yarn run build
 
 FROM base AS runner
 WORKDIR /app
+RUN yarn global add prisma
 ENV NODE_ENV production
 COPY --from=builder /app/public ./public
 RUN mkdir .next
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-COPY --from=deps /app/node_modules/prisma ./node_modules/prisma
-RUN ls ./node_modules
 COPY entrypoint.sh ./
 COPY prisma/schema.prisma ./prisma/schema.prisma
 
