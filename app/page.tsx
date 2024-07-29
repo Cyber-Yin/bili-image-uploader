@@ -4,7 +4,6 @@ import QRcode from "@/components/QRcode";
 import Uploader from "@/components/Uploader";
 import { getUserInfo } from "@/lib/bilibili-api";
 import DatabaseInstance from "@/lib/server/prisma";
-import { sleep } from "@/lib/utils";
 import { Suspense } from "react";
 
 export const revalidate = 0;
@@ -43,8 +42,6 @@ const StreamPage: React.FC = async () => {
       },
     ],
   });
-
-  await sleep(1000);
 
   return (
     <main className="w-full">

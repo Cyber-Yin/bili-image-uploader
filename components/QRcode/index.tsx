@@ -2,9 +2,10 @@
 
 import { toDataURL } from "qrcode";
 import { useFetchQRcode, useQRcodeState } from "./hooks";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
 const QRcode: React.FC = () => {
   const router = useRouter();
@@ -52,11 +53,23 @@ const QRcode: React.FC = () => {
     handleScanned();
   }, [qrcodeState]);
 
-  if (!qrcode || !qrcodeState || !qrcodeImage) return <></>;
+  if (!qrcode || !qrcodeState || !qrcodeImage) {
+    return (
+      <div className="flex w-full h-screen justify-center items-center">
+        <div className="w-48 aspect-square rounded-lg overflow-hidden bg-gray-200 flex items-center justify-center">
+          <Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center justify-center w-full h-screen">
-      <img src={qrcodeImage} alt="qrcode" />
+      <img
+        className="w-48 aspect-square rounded-lg bg-gray-200"
+        src={qrcodeImage}
+        alt="qrcode"
+      />
     </div>
   );
 };
