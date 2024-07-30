@@ -4,6 +4,7 @@ import QRcode from "@/components/QRcode";
 import Uploader from "@/components/Uploader";
 import { getUserInfo } from "@/lib/bilibili-api";
 import DatabaseInstance from "@/lib/server/prisma";
+import Script from "next/script";
 import { Suspense } from "react";
 
 export const revalidate = 0;
@@ -70,6 +71,11 @@ const StreamPage: React.FC = async () => {
       ) : (
         <QRcode />
       )}
+      <Script
+        defer
+        src="https://umami.btoa.dev/script.js"
+        data-website-id="578990a4-2a5f-4b5f-a912-5793534c7c45"
+      />
     </main>
   );
 };
